@@ -47,6 +47,7 @@ module.exports = (function() {
         var imageName = argscheck.getValue(options.name, "");
         var includeCameraView = options.includeCameraView === undefined ? true : !!options.includeCameraView;
         var includeWebView = options.includeWebView === undefined ? true : !!options.includeWebView;
+		var playSound = argscheck(options.playSound, false);
         
         //deprecated saveToPhotoAlbum but temp support for 2016
         saveToPhotoGallery = options.saveToPhotoAlbum === undefined ? saveToPhotoGallery : !!options.saveToPhotoAlbum;
@@ -64,7 +65,7 @@ module.exports = (function() {
              errorCallback,
              "snapshot",
              "snapshot",
-            [encoding, quality, scale, saveToPhotoGallery, imageName, includeCameraView, includeWebView]);
+            [encoding, quality, scale, saveToPhotoGallery, imageName, includeCameraView, includeWebView, playSound]);
 
     }
 
