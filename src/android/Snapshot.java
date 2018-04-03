@@ -79,6 +79,7 @@ public class Snapshot extends CordovaPlugin {
 	private String imageName;
 	private boolean includeCameraView = true;
 	private boolean includeWebView = true;
+	private boolean playSound = false;
 	private CallbackContext callbackContext;
 
 	private byte[] snapshotBytes;
@@ -119,6 +120,7 @@ public class Snapshot extends CordovaPlugin {
 			this.imageName = args.getString(4);
 			this.includeCameraView = args.getBoolean(5) && getVOPlugin() != null;
 			this.includeWebView = args.getBoolean(6);
+			this.playSound = args.getBoolean(7);
 
 			//todo check for includeCameraView & includeWebView == false, which is an error
 			this.snapshot();
@@ -226,7 +228,7 @@ public class Snapshot extends CordovaPlugin {
 //			}
 //		}
 
-		buildAndSaveSnapshotImage(true);
+		buildAndSaveSnapshotImage(this.playSound);
 	}
 
 	public void buildAndSaveSnapshotImage(final boolean playSound) {
